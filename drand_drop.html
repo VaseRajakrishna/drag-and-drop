@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Drand & Drop</title>
+    <script src="jQuery/jquery.js">
+    </script>
+    <style>
+        .drag-items {
+            width: 310px;
+            height: auto;
+            padding: 10px;
+            border: 1px solid #0cc0c0;
+            margin: auto;
+        }
+
+        .drag-item {
+            width: 150px;
+            height: 150px;
+            background: #0cc0c0;
+            display: inline-block;
+        }
+
+        .drop-container {
+            width: 150px;
+            height: 150px;
+            background: #0e0e0e;
+            border-radius: 50%;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="drag-items">
+        <div class="drag-item"></div>
+        <div class="drag-item"></div>
+        <div class="drag-item"></div>
+        <div class="drag-item"></div>
+    </div>
+    <div class="drop-container">
+    </div>
+    <script>
+        var dragItem, dropBox, dragItemPosition, DropBoxPosition, dragItemMove, initialPosition, Left, Top,
+            mousePosition;
+            var elm;
+        $('.drag-item').on('mousedown',function(){
+            elm = this;
+            $(document).on('mousemove',startDrag);
+            $(this).on('mouseup',stopDrag);
+        })
+        function startDrag(e){
+            Left = e.pageX;
+            Top = e.pageY;
+            $(elm).css({
+                "position":"absolute",
+                "left":Left + "px",
+                "top":Top + "px"
+            })
+        }
+        function stopDrag(e){
+            $(document).off('mousemove');
+            $(this).off('mouseup');
+        }
+
+    </script>
+</body>
+
+</html>
